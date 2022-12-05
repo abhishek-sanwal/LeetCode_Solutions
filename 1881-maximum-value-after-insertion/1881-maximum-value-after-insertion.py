@@ -1,23 +1,19 @@
 class Solution:
     def maxValue(self, n: str, x: int) -> str:
         
+        start = 0 if n[0] != "-" else 1
+        
         x = str(x)
         
-        if n[0]!="-":
+        for i in range(start,len(n)):
             
-            for i in range(len(n)):
+            if not start and x > n[i]:
                 
-                if x>n[i]:
-                    
-                    return n[:i] + x + n[i:]
-                
-            return n + x
-        
-        else:
-            for i in range(1,len(n)):
-                
-                if x<n[i]:
-                    
-                    return n[:i] + x + n[i:]
+                return n[:i] + x + n[i:]
             
-            return n + x
+            elif start and n[i] > x:
+                
+                return n[:i] + x + n[i:]
+            
+        return n + x
+                
