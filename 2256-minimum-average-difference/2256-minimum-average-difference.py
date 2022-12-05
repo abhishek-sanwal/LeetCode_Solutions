@@ -7,7 +7,7 @@ class Solution:
         prefix = 0
         min_idx = mini =  10**6
         
-        for i in range(len(nums)):
+        for i in range(len(nums)-1):
             
             prefix += nums[i]
             
@@ -15,11 +15,15 @@ class Solution:
             
             prefix_average = prefix//(i+1)
             
-            suffix_average = s//(len(nums)-i-1) if len(nums)-i-1 else 0
+            suffix_average = s//(len(nums)-i-1) 
             
             if abs(prefix_average - suffix_average) < mini:
                 
                 mini = abs(prefix_average - suffix_average)
                 min_idx = i
-            #print(prefix_average,suffix_average,min_idx)
+        prefix += nums[-1]
+        if prefix//(len(nums)) < mini:
+            mini = prefix 
+            min_idx = len(nums)-1
+        
         return min_idx
