@@ -17,6 +17,7 @@ class Solution:
                     
                     check.add(word[i])
                     curr_len += 1
+                    
                 else:
                     check = set()
                     check.add(word[i])
