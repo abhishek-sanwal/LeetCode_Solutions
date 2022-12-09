@@ -1,6 +1,7 @@
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         
+        # TC => 0(m+n)
         def kthsmallest(nums1,nums2):
             
             k = floor((len(nums1) + len(nums2))/2) + 1
