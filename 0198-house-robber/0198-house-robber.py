@@ -1,8 +1,26 @@
+
+'''
+
+Fibonacci Relation
+
+= > f(i) = f(i-1) + f(i-2)
+
+House Robber Relation
+
+ = > f(i) = max(f(i-1),f(i-2) + nums[i])
+
+where,
+
+    i represents index
+
+so relation is dependent on only previous two results so we can just use two variables to have that result and keep on going to get result.
+
+'''
+    
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        
         arr = nums
-        if len(nums) == 1:
-            return nums[0]
         
         prev = curr  = 0
         
