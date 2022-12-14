@@ -14,7 +14,6 @@ class Solution:
             if i>0:
                 
                 prev2,curr2 = curr2,max(curr2,prev2+nums[i])
-                
             
             if i<len(nums)-1:
                 
