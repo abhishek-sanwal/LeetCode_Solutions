@@ -7,16 +7,15 @@ class Solution:
                     
                 return x + y
 
-            elif token == "-":
+            if token == "-":
 
                 return x-y
 
-            elif token == "*":
+            if token == "*":
 
                 return x*y
 
-            else:
-                return int(x/y)
+            return int(x/y)
         
         
         stack = []
