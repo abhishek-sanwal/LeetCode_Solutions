@@ -1,7 +1,7 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         
-        def eva(x,y,token):
+        def evaluate(x,y,token):
             
             x,y =  int(x),int(y)
             
@@ -28,10 +28,12 @@ class Solution:
             
             if token in operator:
                 
-                y = stack.pop()
+                # Remember if expression is 3 4 / then x=3 y=4
+                # Changing x and y will impact division and substraction results.
+                y = stack.pop() 
                 x = stack.pop()
                 
-                stack.append(eva(x,y,token))
+                stack.append(evaluate(x,y,token))
                     
             else:
                 stack.append(token)
