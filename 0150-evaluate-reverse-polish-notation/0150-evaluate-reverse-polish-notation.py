@@ -1,8 +1,10 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         
-        def eval(x,y,token):
+        def eva(x,y,token):
+            
             x,y =  int(x),int(y)
+            
             if token == "+":
                     
                 return x + y
@@ -15,7 +17,7 @@ class Solution:
 
                 return x*y
 
-            return int(x/y)
+            return int(x/y) #x//y is not same as int(x/y) for negative numbers
         
         
         stack = []
@@ -29,7 +31,7 @@ class Solution:
                 y = stack.pop()
                 x = stack.pop()
                 
-                stack.append(eval(x,y,token))
+                stack.append(eva(x,y,token))
                     
             else:
                 stack.append(token)
