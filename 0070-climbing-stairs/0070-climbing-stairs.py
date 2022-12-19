@@ -1,11 +1,60 @@
+
+#ways(n) = {n: for i in [0-3] else ways(n-1) + ways(n-2)}
+
 class Solution:
     def climbStairs(self, n: int) -> int:
-
-        x = 1
-        y = 0
         
-        for i in range(n):
+        dp = [-1]*(46)
+        # Top_down Dp
+        # Memorization
+        # Memorize the recursion call in lookup table dp
+        # Start from higher subproblem to smaller
+        def TopDown(n):
+            
+            nonlocal dp
+            
+            if n==0:
+
+                return 1
+            
+            if n<0:
+                return 0
+            
+            if dp[n] !=-1:
+                
+                return dp[n]
+            
+            dp[n] = calc(n-1) + calc(n-2)
+            
+            return dp[n]
+        
+        # BottomUp dp
+        # Start from smaller subproblem to larger subproblem
+        
+        def BottomUp(n):
+            
+            nonlocal dp
+        
+            dp[0] = dp[1] = 1
+            for i in range(2,n+1):
+
+                dp[i] = dp[i-1] + dp[i-2]
+            
+            return dp[n]
+        # TopDown(n)
+        # BottomUp(n)
+        
+        
+        x,y = 1,1
+        
+        # ways(n) = ways(n-2) + ways(n-1)
+        
+        # No dp since only previous two results we need for every ways(n)
+        for i in range(2,n+1):
             
             x,y = x+y,x
-        #print(x,y)
+            
         return x
+        return dp[n]
+        
+        
