@@ -5,6 +5,7 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         
         dp = [-1]*(46)
+        dp[0] = dp[1] = 1
         # Top_down Dp
         # Memorization
         # Memorize the recursion call in lookup table dp
@@ -24,7 +25,7 @@ class Solution:
                 
                 return dp[n]
             
-            dp[n] = calc(n-1) + calc(n-2)
+            dp[n] = TopDown(n-1) + TopDown(n-2)
             
             return dp[n]
         
@@ -34,16 +35,15 @@ class Solution:
         def BottomUp(n):
             
             nonlocal dp
-        
-            dp[0] = dp[1] = 1
+    
             for i in range(2,n+1):
 
                 dp[i] = dp[i-1] + dp[i-2]
             
             return dp[n]
-        # TopDown(n)
+        TopDown(n)
         # BottomUp(n)
-        
+        return dp[n]
         
         x,y = 1,1
         
@@ -55,6 +55,6 @@ class Solution:
             x,y = x+y,x
             
         return x
-        return dp[n]
+        
         
         
