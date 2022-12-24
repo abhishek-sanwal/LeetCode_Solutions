@@ -17,4 +17,4 @@ class Solution:
             dp[-3],dp[-2],dp[-1] = dp[-2],dp[-1],((2*(dp[-1]))%mod + dp[-3])%mod
             
             
-        return dp[-1]
+        return dp[3]
