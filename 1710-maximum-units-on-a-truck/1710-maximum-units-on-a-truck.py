@@ -1,8 +1,8 @@
 class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
         
-        boxTypes.sort(key=lambda x:(x[1]),reverse=True)
-        print(boxTypes)
+        boxTypes.sort(key=lambda x:(-x[1]))
+        #print(boxTypes)
         profit = 0 
         
         for box in boxTypes:
