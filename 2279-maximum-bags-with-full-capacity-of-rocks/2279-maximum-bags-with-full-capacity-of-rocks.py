@@ -1,5 +1,5 @@
 class Solution:
-    def maximumBags(self, capacity: List[int], rocks: List[int], add: int) -> int:
+    def maximumBags(self, capacity: List[int], rocks: List[int], additionalRocks: int) -> int:
         
         for i in range(len(capacity)):
             
@@ -16,9 +16,9 @@ class Solution:
                 tot += 1
                 continue
             
-            add -= capacity[i]
+            additionalRocks -= capacity[i]
             
-            if add<0:
+            if additionalRocks<0:
                 break
             tot += 1
             
