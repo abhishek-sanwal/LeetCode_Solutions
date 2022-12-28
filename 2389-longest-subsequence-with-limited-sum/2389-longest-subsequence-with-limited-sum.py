@@ -15,7 +15,7 @@ class Solution:
             
             high = len(prefix) - 1 
             
-            while low < high:
+            while low <= high:
                 
                 mid = (low + high)//2
                 
@@ -35,7 +35,7 @@ class Solution:
                     low = mid + 1
                                             
             #print(low,query,prefix)                                            
-            return low if prefix[low] > query else low + 1
+            return low 
             
         nums.sort()
         
