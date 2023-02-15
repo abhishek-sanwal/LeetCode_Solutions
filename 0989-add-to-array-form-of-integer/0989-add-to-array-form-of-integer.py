@@ -9,15 +9,15 @@ class Solution:
         
         for i in range(len(nums)-1,-1,-1):
             
-            ans.appendleft((nums[i] + k%10 + carry) % 10 )
-            carry = ( k%10 + nums[i] + carry) // 10
+            carry,x = divmod(k%10 + nums[i] + carry,10)
             k//= 10
+            ans.appendleft(x)
             
         while k:
             
-            ans.appendleft((k%10 + carry)%10)
-            carry = (k%10 + carry) // 10
+            carry,x = divmod(k%10 +carry,10)
             k //= 10
+            ans.appendleft(x)
             
         if carry:
             ans.appendleft(carry)
