@@ -36,12 +36,12 @@ class Solution(object):
             
             if i-k in x:
                 
-                pairs += x[i] * x[i-k]
+                pairs +=  x[i-k]
                 
             if i+k in x:
 
-                pairs += x[i] * x[i+k]
+                pairs += x[i+k]
                 
-        return pairs//2
+        return pairs
                 
         
