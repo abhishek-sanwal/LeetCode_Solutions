@@ -5,12 +5,11 @@ class Solution:
         
         for i in s:
             
-            stack.append(i)
-            
-            while len(stack)>1 and stack[-1] == stack[-2]:
+            if stack and  i == stack[-1]:
                 
                 stack.pop()
-                stack.pop()
                 
+            else:
+                stack.append(i)
                 
         return "".join(stack)
