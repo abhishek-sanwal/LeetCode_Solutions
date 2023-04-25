@@ -4,30 +4,16 @@ class Solution:
         i ,j = 0 ,0
         
         lis = []
-        count = 1
-        while i< len(word1) and j < len(word2):
+        
+        while i< len(word1) or j < len(word2):
             
-            if count%2:
+            if i < len(word1):
                 
                 lis.append(word1[i])
                 i+=1
                 
-            else:
+            if j < len(word2):
                 lis.append(word2[j])
                 j+=1
-            count+=1
-        
-        
-        while i<len(word1):
-            
-            lis.append(word1[i])
-            
-            i+=1
-            
-        while j<len(word2):
-            
-            lis.append(word2[j])
-            
-            j+=1
-            
+                
         return "".join(lis)
