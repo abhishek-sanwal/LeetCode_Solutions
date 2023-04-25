@@ -6,10 +6,11 @@ class Solution:
         portions = potions
         portions.sort()
         
+        ans = []
         for i in spells:
             
+            # Leftmost value greater than or equal to x
             x = bisect_left(portions,ceil(success/i))
-            #print(x,portions,len(portions)-x)
             if x == len(portions):
                 
                 ans.append(0)
