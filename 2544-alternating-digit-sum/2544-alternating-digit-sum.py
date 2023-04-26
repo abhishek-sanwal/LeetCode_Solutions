@@ -1,6 +1,19 @@
 class Solution:
     def alternateDigitSum(self, n: int) -> int:
         
+        sign = 1
+        
+        sumi = 0
+        
+        while n:
+            
+            sign = -1* sign
+            sumi += (sign* (n%10))
+            
+            n//=10
+        
+        return sign * sumi
+        
         sumi = 0
         
         x = str(n)
