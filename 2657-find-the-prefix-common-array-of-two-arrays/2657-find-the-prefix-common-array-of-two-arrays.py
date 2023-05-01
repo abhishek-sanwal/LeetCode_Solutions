@@ -6,6 +6,7 @@ class Solution:
         check_A = set()
         check_B = set()
         intersection = set()
+        
         count = 0
         for i in range(min(len(A),len(B))):
 
