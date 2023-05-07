@@ -1,6 +1,42 @@
 class Solution:
     def divisorSubstrings(self, num: int, k: int) -> int:
         
+        pow = 10**k
+        n =  num
+        count =  0
+        
+        while n:
+            
+            d = n%pow
+            print(d,n,pow)
+            if d and num%d==0:
+                
+                count += 1
+            
+            if n//pow==0:
+                break
+            
+            n //= 10
+            
+        
+        return count
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         s = str(num)
         
         front = 0
