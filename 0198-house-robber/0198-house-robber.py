@@ -15,8 +15,10 @@ where,
 
 so relation is dependent on only previous two results so we can just use two variables to have that result and keep on going to get result.
 
+prev is f(i-2)
+curr is f(i-1)
+in code
 '''
-    
 class Solution:
     def rob(self, nums: List[int]) -> int:
         
