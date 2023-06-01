@@ -2,9 +2,31 @@ from math import comb
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         
+        
+        #[i-1][j] + [i] [j-1]
         row,col = m,n
         
-        dp = [[0 for i in range(col)] for j in range(row)]
+        #dp = [[0 for i in range(col)] for j in range(row)]
+        
+        # Previous row [i-1]
+        dp = [1 for i in range(col+1)]
+        
+        # Current row[i]
+        
+        new_dp = [1 for i in range(col+1)]
+        
+        for i in range(1,row):
+            
+            for j in range(1,col):
+                
+                new_dp[j] = dp[j] + new_dp[j-1]
+                
+            print(new_dp)    
+            dp = new_dp[:]
+            
+        
+        return new_dp[-2]
+        
         
         for i in range(row):
             
