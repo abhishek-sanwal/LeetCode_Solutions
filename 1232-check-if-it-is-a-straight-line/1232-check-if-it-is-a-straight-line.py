@@ -3,7 +3,10 @@ class Solution:
         
         (x0, y0), (x1, y1) = coordinates[: 2]
         
+        dx ,dy = (x1-x0),(y1-y0)
+        
         for x, y in coordinates:
-            if (x1 - x0) * (y - y1) != (x - x1) * (y1 - y0):
+            
+            if dx * (y - y1) != (x - x1) * dy:
                 return False
         return True
