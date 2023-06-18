@@ -28,9 +28,3 @@ class SnapshotArray:
         return self.snapp[index][lis[x-1]] if x else 0
         
 
-
-# Your SnapshotArray object will be instantiated and called as such:
-# obj = SnapshotArray(length)
-# obj.set(index,val)
-# param_2 = obj.snap()
-# param_3 = obj.get(index,snap_id)
