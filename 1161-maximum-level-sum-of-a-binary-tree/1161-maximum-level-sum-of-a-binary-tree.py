@@ -7,6 +7,36 @@
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         
+        ans = 0
+        level_map = defaultdict(int)
+        maxi = -(sys.maxsize)
+        
+        def dfs(root,level=1):
+            
+            if not root:
+                
+                return 0
+            
+            level_map[level] += root.val
+            
+            dfs(root.left,level+1)
+            dfs(root.right,level+1)
+            
+        
+        dfs(root)
+        
+        for i in level_map:
+            
+            if maxi < level_map[i]:
+                
+                maxi = level_map[i]
+                
+                ans = i
+        
+        return ans
+            
+            
+        
         maxi = - (10**12)
         
         level = 1
