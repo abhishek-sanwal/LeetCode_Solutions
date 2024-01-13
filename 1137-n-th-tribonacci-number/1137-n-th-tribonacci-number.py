@@ -1,13 +1,22 @@
 class Solution:
     def tribonacci(self, n: int) -> int:
         
+        # For TopDown DP
+        
         # Guard Condition
         
         # Base Condition [Smallest subproblem and its solution]
         
+        # Check whether case is memorized or not
+        
         # Recurrance relation [How we can break the problem into sub-problems]
         
+        # Memorized the recursion call
+        
+        # Return memorized call
+        
         # larger n values => smaller n values
+        
         memo = dict()
         def TopDown(n:int)->int:
             '''
@@ -37,7 +46,15 @@ class Solution:
             memo[n] = TopDown(n-1) + TopDown(n-2) + TopDown(n-3)
             return memo[n]
         
-            
+        # Opposite to TopDown
+        # Smaller n values to larger n values
+        
+        # Initilization of Dp array
+        # Guard Conditons
+        
+        # Recurrance relation logic
+        # Can we optimize space [ Space Optimization]
+        
         def BottomUp(n:int)->int:
             
             '''
