@@ -2,11 +2,7 @@ class Solution:
     def minSteps(self, s: str, t: str) -> int:
         
         count = 0
-        hashmap = defaultdict(int)
-        for char in s:
-
-            hashmap[char] += 1
-
+        hashmap = Counter(s)
         for char in t:
 
             if char in hashmap:
