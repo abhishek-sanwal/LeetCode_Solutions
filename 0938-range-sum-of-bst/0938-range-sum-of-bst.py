@@ -15,8 +15,6 @@ class Solution:
             return 0
         
         if root.val >= low and root.val <= high:
-            #print(self.curr_sum)
-            #print(curr_sum)
             curr_sum = root.val
             print(curr_sum) 
 
