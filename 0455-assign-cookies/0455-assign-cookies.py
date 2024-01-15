@@ -3,8 +3,7 @@ class Solution:
     
         g.sort()
         s.sort()
-        
-        count = i =j = 0
+        i = j = 0
         
         while i<len(g) and j<len(s):
             
@@ -12,9 +11,8 @@ class Solution:
                 
                 i += 1
                 j += 1
-                count +=1
             else:
                 j += 1
         
-        return count
+        return i
         
