@@ -33,7 +33,10 @@ class Solution:
             prev = middle
             middle = ref
     
+        # To break any cycles
         prev_middle.next = None
+        
+        # Now merge lists
         
         head1, head2 = head, prev
         
@@ -49,18 +52,4 @@ class Solution:
             head2 = x
             
         return head
-        
-        curr_list = head
-        
-        while temp != prev:
-            
-            curr_list.next = prev
-            curr_list = curr_list.next
-            
-            temp.next.next
-            
-            
-        return head
-            
-            
         
