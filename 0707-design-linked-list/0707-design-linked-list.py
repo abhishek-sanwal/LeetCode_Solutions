@@ -74,7 +74,7 @@ class MyLinkedList:
             self.head = self.head.next
             if self.size == 1:
                 self.tail = None
-                self.size -= 1
+                #self.size -= 1
         else:
             prev = self.head
             for _ in range(index - 1):
