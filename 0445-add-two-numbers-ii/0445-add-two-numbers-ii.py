@@ -6,10 +6,10 @@
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         
-        def addNumbers(l1,l2):
+        def ReverseaddNumbers(l1,l2):
             
             ans = dh = ListNode(-1)
-
+            prev = None
             sumi = carry = 0
 
             while l1 or l2:
@@ -26,19 +26,17 @@ class Solution:
                 carry, sumi = divmod( val1 + val2 + carry,10)
                 #print(carry,sumi)
                 node = ListNode(sumi)
-                ans.next = node
-                ans = ans.next
+                node.next = prev
+                prev = node
 
             while carry:
 
                 node = ListNode(carry % 10)
-                ans.next = node
-                ans = ans.next
+                node.next = prev
+                prev = node
                 carry //= 10
 
-            ans.next = None
-
-            return dh.next
+            return prev
         
         def reverseLL(head):
             
@@ -53,6 +51,6 @@ class Solution:
                 
             return prev
         
-        
-        return reverseLL(addNumbers(reverseLL(l1),reverseLL(l2)))
+    
+        return ReverseaddNumbers(reverseLL(l1),reverseLL(l2))
         
