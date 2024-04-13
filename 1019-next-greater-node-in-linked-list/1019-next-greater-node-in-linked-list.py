@@ -6,17 +6,23 @@
 class Solution:
     def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
         
-        arr = []
+        idx = 0
+        stack = list()
+        ans = []
         
         while head:
-            
-            arr.append(head.val)
+            val = head.val
+            while stack and stack[-1][0] < val:
+                
+                ans[stack.pop()[1]] = val
+                
+            stack.append([val,idx])
             head = head.next
+            ans.append(0)
+            idx += 1
             
-        stack = []
-        
-        ans = [0]*len(arr)
-        
+        return ans 
+    
         for idx,val in enumerate(arr):
             
             while stack and arr[stack[-1]] < val:
