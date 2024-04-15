@@ -52,9 +52,6 @@ class Solution:
             # For right part
             nw.right = recursion(node.next)
             
-            # Cut connection
-            node.next = None
-            
             return nw
         
         return recursion(head)
