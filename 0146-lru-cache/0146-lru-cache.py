@@ -32,25 +32,21 @@ class DoublyLinkedList:
     def insertAfterHead(self,val,key):
         
         newNode = ListNode(val,key)
+        temp = self.head
+        x = temp.next
+        temp.next = newNode
+        newNode.prev = temp
         
         if self.head.next == self.tail:
             #print("true","empty")
             
-            self.head.next = newNode
-            newNode.prev = self.head
             newNode.next = self.tail
             self.tail.prev = newNode
             return newNode
         
-        temp = self.head
-        
-        # After node
-        x = temp.next
-        
-        temp.next = newNode
-        newNode.prev = temp
         newNode.next = x
         x.prev = newNode
+        
         return newNode
     
     # 0(1) time
