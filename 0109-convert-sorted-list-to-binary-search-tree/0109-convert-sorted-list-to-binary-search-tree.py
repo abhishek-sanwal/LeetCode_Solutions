@@ -25,10 +25,6 @@ class Solution:
                 fast = fast.next.next
                 prev = slow
                 slow = slow.next
-                
-            if slow:
-                print(slow.val,"Middle")
-                pass
             
             prev.next = None
             
