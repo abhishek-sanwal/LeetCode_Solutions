@@ -67,18 +67,18 @@ class Solution:
             
             return merge(left,right)
         return merge_sort(head)
-        arr = []
-        temp = prev = head
-        while head:
+#         arr = []
+#         temp = prev = head
+#         while head:
             
-            arr.append(head.val)
-            head = head.next
-        arr.sort()
-        i=0
-        while prev:
+#             arr.append(head.val)
+#             head = head.next
+#         arr.sort()
+#         i=0
+#         while prev:
             
-            prev.val = arr[i]
-            i+=1
-            prev = prev.next
+#             prev.val = arr[i]
+#             i+=1
+#             prev = prev.next
             
-        return temp
+#         return temp
