@@ -20,17 +20,13 @@ class DoublyLinkedList:
     # 0(1)
     def delete_last_element(self):
         
-        temp = self.head
-         
-        while temp.next.next != self.tail:
-            
-            temp = temp.next
-            
-        x = temp.next
-        temp.next = self.tail
-        self.tail.prev = temp
-        #del x
-        return x
+        node = self.tail.prev
+        
+        node.prev.next = self.tail
+        self.tail.prev = node.prev
+        
+        return node
+        
     
     #0(1)
     def insertAfterHead(self,val,key):
