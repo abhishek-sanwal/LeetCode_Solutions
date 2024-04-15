@@ -45,8 +45,10 @@ class Solution:
             
             node = middleLL(head)
             
-            # for left part
+            # Create node
             nw = TreeNode(node.val)
+            
+            # for left part
             nw.left = recursion(head)
             
             # For right part
