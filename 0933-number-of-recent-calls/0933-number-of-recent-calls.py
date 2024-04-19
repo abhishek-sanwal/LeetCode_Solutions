@@ -11,20 +11,12 @@ class RecentCounter(object):
         :type t: int
         :rtype: int
         """
-        
         self.arr.append(t)
-        x = bisect_left(self.arr,t-3000)
         
-        if x == len(self.arr):
-            
-            return 0
-        ans = len(self.arr) - x
-        idx = 0
-        while idx < x:
+        while self.arr and self.arr[0] < t-3000:
             self.arr.popleft()
-            idx += 1
     
-        return ans
+        return len(self.arr)
         
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
