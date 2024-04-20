@@ -4,7 +4,7 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        
+        s = [i for i in s]
         mapp_closing = {
             
             ")" :"(",
@@ -12,24 +12,25 @@ class Solution(object):
             "]" : "["
         }
         
-        stack = []
+        var = -1
         
         for i in s:
             
             if i in mapp_closing:
                 
                 # No matching opening bracket found expression is invalid.
-                if not stack or stack[-1] != mapp_closing[i]:
-                    
+                if var == -1 or s[var] != mapp_closing[i]:
+                    #print(var,i,s[var])
                     return False
                 
                 # Pop the opening bracket
-                stack.pop()
+                var -= 1
                 
             else:
-                stack.append(i)
+                var += 1
+                s[var] = i
                 
-        return len(stack) == 0
+        return var == -1
                 
                 
                 
