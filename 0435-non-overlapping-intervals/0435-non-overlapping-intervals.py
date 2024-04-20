@@ -11,7 +11,7 @@ class Solution:
             
             if i[0] >= last:
                 
-                last = i[1]
+                last = max(last,i[1])
                 count += 1
                 
         return len(intervals)  -count
