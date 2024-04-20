@@ -2,13 +2,16 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
         ans = []
-        
+        candidates.sort()
         def backTracking(curr_sum,idx,curr_list):
+            
             
             if curr_sum > target or idx == len(candidates):
                 
                 return None
             #print(curr_sum,curr_list)
+            if candidates[idx] > target:
+                return
             if curr_sum == target:
                 
                 ans.append(curr_list[:])
