@@ -19,7 +19,7 @@ class Solution:
             if other_char_freq > k:
                 print("true")
                 # 0(k)
-                if (rear-front +1) - max(mapp.values()) >=k:
+                if (rear-front +1) - maxi >=k:
                     
                     mapp[s[front]] -=1
                     front += 1
