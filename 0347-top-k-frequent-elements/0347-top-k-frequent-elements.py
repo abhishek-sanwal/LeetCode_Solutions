@@ -9,15 +9,16 @@ class Solution:
             
             mapp[i] = mapp.get(i,0) + 1
             
-        max_heap = [ [-mapp[i],i] for i in mapp]
-        heapify(max_heap)
+        min_heap = []
         
-        ans = []
-        
-        while k:
+        for i in mapp:
             
-            ans.append(heappop(max_heap)[1])
-            k-=1
+            heappush(min_heap,[mapp[i],i])
             
-        return ans
+            if len(min_heap) > k:
+
+                heappop(min_heap)
+                
+        return [i[1] for i in min_heap]
+            
         
