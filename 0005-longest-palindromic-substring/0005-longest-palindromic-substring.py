@@ -5,16 +5,11 @@ class Solution(object):
         :rtype: str
         """
         
-        "babad"
+        maxi = start = 0
         
-        #even length = (i-1)
-        
-        maxi = 0
-        
-        for i in range(len(s)):
+        def update(j,k):
             
-            # Odd length
-            j = k = i
+            nonlocal maxi, start
             while j>-1 and k< len(s) and s[j] == s[k]:
                 if maxi < k-j+1:
                     maxi = k-j+1
@@ -22,17 +17,12 @@ class Solution(object):
                 j -= 1
                 k += 1
             
+        for i in range(len(s)):
             
-            # Even length
-            k = i
-            j = i-1
+            #odd length
+            update(i,i)
+            #even length
+            update(i-1,i)
             
-            while j>-1 and k<len(s) and s[j] == s[k]:
-                if maxi < k-j+1:
-                    maxi = k-j+1
-                    start = j
-                j-=1
-                k+=1
-        print(start)
         return s[start:start+maxi]
                 
