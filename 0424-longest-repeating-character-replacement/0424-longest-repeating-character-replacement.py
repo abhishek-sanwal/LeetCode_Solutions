@@ -2,7 +2,7 @@ class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         
         mapp = defaultdict(int)
-        maxi = ans = front = 0
+        maxi =  front = 0
         
         # Sliding window
         for rear in range(len(s)):
@@ -23,10 +23,8 @@ class Solution:
                     
                     mapp[s[front]] -=1
                     front += 1
-                
-            ans = max(ans,rear-front+1)
             
-        return ans
+        return len(s) - front
             
         
         
