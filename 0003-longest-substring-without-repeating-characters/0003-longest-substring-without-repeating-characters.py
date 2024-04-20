@@ -8,6 +8,20 @@ class Solution(object):
         
         # Sliding window problem
         
+        mapp = {}
+        
+        ptr = maxi = 0
+        
+        for i,ele in enumerate(s):
+            
+            if ele in mapp:
+                ptr = max(ptr,mapp[ele] + 1)
+                
+            mapp[ele] = i
+            maxi = max(maxi,i-ptr + 1)
+        
+        return maxi
+        
         maxi = front = 0
         
         for rear in range(len(s)):
