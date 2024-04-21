@@ -1,6 +1,14 @@
 class Solution:
     def distinctSubseqII(self, s: str) -> int:
         
+        dp = [0]*26
+        
+        for i in s:
+            
+            dp[ord(i)-ord('a')] = sum(dp) + 1
+        print(dp)
+        return sum(dp) % (10**9+7)
+        
         dp = [1]
         
         mapp = {
