@@ -1,8 +1,44 @@
 class Solution:
     def distinctSubseqII(self, s: str) -> int:
         
-        if not s:
-            return
+        dp = [1]
+        
+        mapp = {
+        }
+         
+        for i in range(len(s)):
+            
+            dp.append(2*dp[-1])
+            if s[i] in mapp:
+                
+                dp[-1] -= dp[mapp[s[i]]]
+                
+            mapp[s[i]] = i
+            
+        return (dp[-1] - 1) % (10**9+7)
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         dp = [1]
         mapp = {}
