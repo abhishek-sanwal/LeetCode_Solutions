@@ -2,10 +2,8 @@ class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         
         stack = list()
+        
         s = [i for i in s]
-        match = {
-            "(" :")"
-        }
         
         for i,ele in enumerate(s):
             
