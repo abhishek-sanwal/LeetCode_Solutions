@@ -3,16 +3,13 @@ class Solution:
         
         count = [0]*26
         maxi = 0
+        #0(26*n)
         for i in s:
             x = ord(i) - ord('a')
             c = 1
-            for i in range(x,min(26,x+k+1),1):
+            for i in range(max(0,x-k),min(26,x+k+1),1):
                 c = max(c,count[i]+1)
                 
-            for i in range(x,max(-1,x-k-1),-1):
-                c = max(c,count[i]+1)
-            #print(count,c)
-            
             count[x] = c
             maxi = max(maxi,c)
         
