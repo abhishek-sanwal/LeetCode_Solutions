@@ -4,8 +4,6 @@ class Solution:
         count = [0]*26
         maxi = 0
         for i in s:
-            
-            # count how many elements were less than s-k in 
             x = ord(i) - ord('a')
             c = 1
             for i in range(x,min(26,x+k+1),1):
