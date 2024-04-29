@@ -21,7 +21,6 @@ class Solution:
         
         def dfs(x,y,ptr,vis):
             vis.add((x,y))
-            #print(x,y,ptr)
             if ptr == len(word):
                 # We found a match 
                 return True
@@ -48,7 +47,6 @@ class Solution:
                 if board[i][j] == word[ptr]:
                     vis.add((i,j))
                     if dfs(i,j,ptr + 1,vis):
-                        
                         return True
                     vis.remove((i,j))
                     
