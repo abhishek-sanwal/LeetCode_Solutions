@@ -1,6 +1,21 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         
+        chars = set()
+        count = 0
+        for char in s:
+            
+            if char in chars:
+                
+                count += 2
+                chars.remove(char)
+            else:
+                chars.add(char)
+                
+        
+        return count + int(len(chars) > 0)
+        
+        
         chars = [0]*52
         
         for i in s:
@@ -13,7 +28,6 @@ class Solution:
             else:
                 
                 chars[ord(i)-ord('a')] += 1 
-            
             
         odd = count = 0
         
