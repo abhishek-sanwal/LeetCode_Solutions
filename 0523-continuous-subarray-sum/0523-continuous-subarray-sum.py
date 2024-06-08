@@ -35,13 +35,11 @@ class Solution:
 #         prefix_sum = 1
 #         mapp ={5,1}
 #         prefix_sum = 5
-        
-        count_zeros = 0
-        max_zeros = 0
+        count_zeros = max_zeros = 0
         for i in range(len(nums)):
         
             # 1-length subarray is not allowed as a solution.
-            if not nums[i]%k or not nums[i]:
+            if not nums[i] % k or not nums[i]:
                 count_zeros += 1
                 max_zeros = max(max_zeros,count_zeros)
                 continue    
