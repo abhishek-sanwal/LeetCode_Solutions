@@ -10,5 +10,4 @@ class Solution:
                 j+= 1
                 
             i += 1
-        # print(j,t[j])
         return len(t) - j
