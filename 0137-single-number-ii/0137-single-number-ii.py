@@ -14,6 +14,7 @@ class Solution:
                 sign_bit %= 3
             
             element = abs(element)
+            
             while element:
                 
                 if element & 1:
@@ -34,8 +35,12 @@ class Solution:
                 
                 mask = 1 << bit
                 ans |= mask
-        print(sign_bit)
-        return ans if sign_bit != 1 else -ans
+        
+        if sign_bit == 0:
+            
+            return ans
+        
+        return "This case will never occur" if sign_bit == 2  else -ans
         
         
 #         xor_of_array = single_element ^ (xor_of_triple_elements)
