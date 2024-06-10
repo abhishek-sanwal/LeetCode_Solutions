@@ -29,8 +29,6 @@ class Solution:
         
         for bit in range(0,32):
             
-            bits[bit] %= 2
-            
             if bits[bit]:
                 
                 mask = 1 << bit
