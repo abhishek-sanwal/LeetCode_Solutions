@@ -11,8 +11,7 @@ class Solution:
                     
                 large = max(large,abs(element))
                 
-            if -element not in vis and element not in vis:
-                vis.add(element)
+            vis.add(element)
                 
                 
         return large
