@@ -1,6 +1,21 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         
+        ones = twos = 0
+        
+        for element in nums:
+            
+            ones = (ones ^ element) & ~twos
+            
+            twos = (twos ^ element) & ~ones
+            
+        return ones
+        
+        
+        
+        
+        
+        
         bits = [0]*32
         
         sign_bit = 0
