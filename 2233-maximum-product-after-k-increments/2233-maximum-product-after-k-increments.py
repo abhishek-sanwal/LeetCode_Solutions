@@ -13,11 +13,12 @@ class Solution:
             k -= 1
         
         product = 1
+        mod = pow(10,9) + 7
         for num, count in counts.items():
             if count > 0:
-                product *= (num**count)
+                product = (product * (num**count)) % mod
             
-        return product % (10**9 + 7)
+        return product 
         
         
         heapify(nums)
