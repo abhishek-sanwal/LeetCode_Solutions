@@ -11,16 +11,9 @@ class Solution:
         
         def count_operations(current, desired):
             
-            oprs = ceil(current / desired)
-
-#         # (k - 1) is the minimum number of times you'll have to split
-#         ret += k - 1
-#         # (num // k) is the maximal number you can create from splitting (k - 1) times
-#         prev = num // k
+            oprs = ceil(current / desired) - 1
             
-#             oprs = ceil(current/desired) 
-            
-            return [ current//oprs ,oprs-1]
+            return [ current//(oprs + 1) ,oprs]
             
             
 #         [12,9,7,6,17,19,21]
