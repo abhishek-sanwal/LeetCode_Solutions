@@ -9,8 +9,6 @@ class Solution:
             
             counter[nums[rear]] += 1
             
-            max_freq = max(max_freq, counter[nums[rear]])
-            
             while counter[nums[rear]] > k:
                 counter[nums[front]] -= 1
                 front += 1
