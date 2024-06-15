@@ -13,7 +13,7 @@ class Solution:
                     continue
 
                 count += rear - front +1
-            # print(count)
+            
             return count
          
         return count_subarrays_with_max_atmost_x(right) - count_subarrays_with_max_atmost_x(left-1)
