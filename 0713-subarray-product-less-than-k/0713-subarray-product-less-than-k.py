@@ -20,7 +20,7 @@ class Solution:
                 prod //= nums[front]
                 front += 1
                 
-            count += rear -front +1 
+            count += rear - front + 1 
         return count
             
                 
