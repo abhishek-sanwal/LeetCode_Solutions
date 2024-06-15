@@ -22,17 +22,21 @@ class Solution:
         
         front = count = 0
         
-        counter = Counter()
+        counter_max = 0
         
         maxi = max(nums)
         
         for rear in range(len(nums)):
             
-            counter[nums[rear]] += 1
-            
-            while counter[maxi] >= k:
+            if nums[rear] == maxi:
                 
-                counter[nums[front]] -= 1
+                counter_max += 1
+            
+            while counter_max >= k:
+                
+                if nums[front] == maxi:
+                
+                    counter_max -= 1
                 
                 front += 1
                 
