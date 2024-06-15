@@ -1,9 +1,18 @@
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         
-        mapp = {ele: i for i, ele in enumerate(order)}
+        count = Counter(s)
         
-        s = [i for i in s]
-        s.sort(key= lambda x:mapp.get(x,0))
+        ans = list()
         
-        return "".join(s)
+        for i in order:
+            
+            ans += i*count[i]
+            count[i] = 0
+            
+        for i in count:
+            ans += i*count[i]
+            
+        return "".join(ans)
+        
+        
