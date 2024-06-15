@@ -20,7 +20,7 @@ class Solution:
         
 #         [3,3] done
         
-        front = count = 0
+        front = count = count1 = 0
         
         counter_max = 0
         
@@ -40,13 +40,15 @@ class Solution:
                 
                 front += 1
                 
+            count1 += front
             count += (rear-front+1)
             
         total_subarrays = ( len(nums) * (len(nums)+1)) // 2
         # print(total_subarrays)
         
-        return total_subarrays - count
-                
+        # return total_subarrays - count
+          
+        return count1
             
             
         
