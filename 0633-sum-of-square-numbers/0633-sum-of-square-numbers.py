@@ -7,6 +7,30 @@ class Solution:
         
         n = c
         
+        low = 0*0
+        
+        high = int(c**0.5)
+        
+        while low <= high:
+            
+            left = low**2
+            right = high**2
+            
+            if left + right < n:
+                
+                low += 1
+                
+            elif left + right > n:
+                
+                high -= 1
+                
+            else:
+                
+                return True
+            
+        return False
+        
+        
         for i in range(2,int(n**0.5)+1):
             
             if n%i==0:
