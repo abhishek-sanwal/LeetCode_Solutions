@@ -3,7 +3,7 @@ class Solution {
      
         int res[] = new int[2];
         
-        HashMap<Integer,Integer> mapp = new HashMap<Integer, Integer>();
+        Map<Integer,Integer> mapp = new HashMap<>();
         
         for(int i=0;i<nums.length;++i){
             
