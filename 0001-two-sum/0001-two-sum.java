@@ -13,7 +13,7 @@ class Solution {
             {
                 res[0] = mapp.get(req);
                 res[1] = i;
-                return res;
+                break;
             }
             mapp.put(nums[i],i);
             
