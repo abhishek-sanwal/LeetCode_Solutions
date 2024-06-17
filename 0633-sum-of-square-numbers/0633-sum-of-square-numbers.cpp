@@ -4,6 +4,20 @@ public:
         
         int num =c;
         
+        long low = 0, high = sqrt(num);
+        
+        while(low <= high){
+            
+            if(low*low + high*high > num) high--;
+                
+            else if(low*low + high*high < num) low++;
+                
+            else return true;
+            
+        }
+        
+        return false;
+        
         for(int i=2;i<sqrt(num);++i){
             
             if(!(num%i)){
