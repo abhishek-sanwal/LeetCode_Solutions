@@ -11,15 +11,13 @@ class Solution {
             
             if(mapp.containsKey(req)) 
             {
-                res[0] = mapp.get(req);
-                res[1] = i;
-                break;
+                return new int[] {mapp.get(req),i};
             }
             mapp.put(nums[i],i);
             
         }
     
-        return res;
+        return null;
         
            
     }
