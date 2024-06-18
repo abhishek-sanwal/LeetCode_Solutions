@@ -5,7 +5,8 @@ class Solution {
         int[] worker
     ) {
         
-        int maximumAbility = Arrays.stream(worker).max().getAsInt();
+        // int maximumAbility = Arrays.stream(worker).max().getAsInt();
+        int maximumAbility = IntStream.of(worker).max().getAsInt();
         // System.out.println(maximumAbility);
         int[] ability = new int[maximumAbility+1];
         
