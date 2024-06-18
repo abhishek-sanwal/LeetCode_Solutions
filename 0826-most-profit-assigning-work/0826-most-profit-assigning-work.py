@@ -35,6 +35,38 @@ class Solution:
         
 #         worker = [4,5,6,7]
     
+        max_ability = max(worker)
+        
+        ability = [0]*(max_ability + 1)
+        
+        for index, diff in enumerate(difficulty):
+            
+            if diff <= max_ability:
+                ability[diff] = max(ability[diff], profit[index])
+            
+        # I need to find max_profit from 0 to curr_index
+        
+        for index in range(1,len(ability)):
+            
+            ability[index] = max(ability[index],ability[index-1])
+            
+        max_profit = 0
+        
+        for curr_worker in worker:
+            
+            max_profit += ability[curr_worker]
+
+        return max_profit
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         arr = [[i,j] for i,j in zip(difficulty, profit)]
         # arr = [[2,10],[4,20],[6,30],[8,40],[10,50]]
         arr.sort(key=lambda x:(x[0],-x[1]))
