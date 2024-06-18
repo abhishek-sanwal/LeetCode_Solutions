@@ -41,19 +41,22 @@ class Solution:
         heap = []
         task_profit = index =  0
         worker.sort()
+        max_profit = 0
         for curr_worker in worker:
             
             # Find highest profitbale task less than equal to curr_worker efficiency
             while index < len(difficulty) and arr[index][0] <= curr_worker:
                 # print(arr[index],curr_worker)
                 #0(logk) where k is size of heap 
-                heappush(heap,-1*arr[index][1])
+                # heappush(heap,-1*arr[index][1])
+                max_profit = max(max_profit, arr[index][1])
                 index += 1
                 
-            if heap:
+            task_profit += max_profit
+#             if heap:
                 
-                #0(logk) where k is size of heap 
-                task_profit += -1*heap[0]
+#                 #0(logk) where k is size of heap 
+#                 task_profit += -1*heap[0]
                 
         return task_profit
                 
