@@ -4,8 +4,8 @@ class TrieNode:
     def __init__(self):
         
         self.children = dict()
-        self.word = False
-        self.wordsIndex = list()
+        self.isWord = False
+        
 
 class Trie:
 
@@ -24,38 +24,45 @@ class Trie:
                 trie.children[i] = TrieNode()
 
             trie = trie.children[i]
-            trie.wordsIndex.append(index)
                 
-        trie.word = True
-            
+        trie.isWord = True
+    
+        
     def search(self,products:List[str], word: str) -> bool:
         
+        ans = list()
         trie = self.trie
-        lis = []
-        for i in word:
+        lis = list()
+        def dfs(index,trie,curr_word):
             
-            if i not in trie.children:
+            if len(lis) == 3:
                 
-                lis.append([])
+                return None
+            
+            if trie.isWord:
+                lis.append(curr_word)
+            
+            for char in string.ascii_lowercase:
+                
+                if char in trie.children:
+                    
+                    dfs(index+1,trie.children[char],curr_word + char)
+        pref = ""
+        for char in word:
+            pref += char
+            if char not in trie.children:
                 break
-                
-            trie = trie.children[i]
-            
-            curr_suggestion = list()
-            for j in trie.wordsIndex:
-                curr_suggestion.append(products[j])
-                if len(curr_suggestion) == 3:
-                    break
-            lis.append(curr_suggestion)
-        if len(lis) != len(word):
-            
-            for j in range(len(word)-len(lis)):
-                
-                lis.append([])
+            trie = trie.children[char]
+            dfs(0,trie,pref)
+            ans.append(lis)
+            lis = list()
         
-        return lis
-        
+        if len(ans) != len(word):
 
+            for j in range(len(word)-len(ans)):
+                
+                ans.append(list())
+        return ans
   
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
@@ -66,7 +73,6 @@ class Trie:
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         
-        products.sort()
         
         trie = Trie()
         
