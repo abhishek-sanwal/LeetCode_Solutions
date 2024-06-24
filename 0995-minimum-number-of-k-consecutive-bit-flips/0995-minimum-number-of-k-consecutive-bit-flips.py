@@ -1,24 +1,28 @@
 class Solution:
     def minKBitFlips(self, nums: List[int], k: int) -> int:
         
+        # 2 means 0-1 flip
+        # 3 means 1-0 flip
         
         currflips = maxflips = 0
-        
         for i in range(len(nums)):
             
-            if i>k-1 and nums[i-k] ==2:
-                
+            if i>k-1 and nums[i-k] in [2,3]:
                 currflips -= 1
+                # Setting bit to previous position
+                nums[i-k] -= 2
                 
             if currflips%2 == nums[i]:
                 
                 if i > len(nums)-k:
+                    print(nums)
                     return  -1
                 
-                nums[i] = 2
+                if i+k<len(nums):
+                    nums[i] = 3 if nums[i] else 2
                 currflips += 1
                 maxflips += 1
-                
+        # print(nums)
         return maxflips
         
         que = deque()
