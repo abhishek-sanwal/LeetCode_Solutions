@@ -15,10 +15,10 @@ class Solution:
             if currflips%2 == nums[i]:
                 
                 if i > len(nums)-k:
-                    print(nums)
+                    
                     return  -1
                 
-                if i+k<len(nums):
+                if i+k < len(nums):
                     nums[i] = 3 if nums[i] else 2
                 currflips += 1
                 maxflips += 1
