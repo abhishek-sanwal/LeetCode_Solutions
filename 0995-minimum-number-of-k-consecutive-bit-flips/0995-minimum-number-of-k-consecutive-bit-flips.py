@@ -1,6 +1,26 @@
 class Solution:
     def minKBitFlips(self, nums: List[int], k: int) -> int:
         
+        
+        currflips = maxflips = 0
+        
+        for i in range(len(nums)):
+            
+            if i>k-1 and nums[i-k] ==2:
+                
+                currflips -= 1
+                
+            if currflips%2 == nums[i]:
+                
+                if i > len(nums)-k:
+                    return  -1
+                
+                nums[i] = 2
+                currflips += 1
+                maxflips += 1
+                
+        return maxflips
+        
         que = deque()
         count = 0
         # [1,1,0] k =2
@@ -10,20 +30,23 @@ class Solution:
         # [1,1,0]         
         # [0] [0] count = 1
         # [1] []
+        
         for i in range(len(nums)):
             
-            while que and i-que[0] >= k:
+            while que and i - que[0] >= k:
                 que.popleft()
-
+        
             if len(que)%2:
                 nums[i] ^= 1
 
             if nums[i] == 0:
                 
+                # We can't do this operation here.
                 if i > len(nums)-k:
                     return  -1
                 que.append(i)
                 count += 1
+                
         return count
             
 
