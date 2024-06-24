@@ -4,6 +4,7 @@ class Solution:
         # 2 means 0-1 flip
         # 3 means 1-0 flip
         
+        # 0(N) time original array restored after modification
         currflips = maxflips = 0
         for i in range(len(nums)):
             
@@ -19,12 +20,13 @@ class Solution:
                     return  -1
                 
                 if i+k < len(nums):
-                    nums[i] = 3 if nums[i] else 2
+                    nums[i] += 2
                 currflips += 1
                 maxflips += 1
-        # print(nums)
+        
         return maxflips
         
+        #0(N) space deque solution
         que = deque()
         count = 0
         # [1,1,0] k =2
