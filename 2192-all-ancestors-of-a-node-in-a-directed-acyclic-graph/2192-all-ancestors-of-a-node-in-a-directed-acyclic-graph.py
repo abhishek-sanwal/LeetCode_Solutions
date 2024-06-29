@@ -18,11 +18,9 @@ class Solution:
                 
                 if adjacent not in vis:
                     dfs(adjacent)
-            
-            
+        
             stack.append(node)
             
-        
         for node in range(n):
             
             if node not in vis:
@@ -34,7 +32,7 @@ class Solution:
             for vertice in adj[node]:
                 anchestors[vertice].add(node)
                 anchestors[vertice].update(anchestors[node])
-        del stack     
+        # del stack     
 
         for index in range(len(anchestors)):
             anchestors[index] = sorted((anchestors[index]))
