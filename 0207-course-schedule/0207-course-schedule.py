@@ -1,6 +1,5 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        
         # Kahn's algo for Topo sort
         
         indegree = [0]*numCourses
@@ -20,14 +19,14 @@ class Solution:
             if not indegree[node]:
                 
                 que.append(node)
-                order.append(node)
+                
                 
         while que:
             
             for _ in range(len(que)):
                 
                 node = que.popleft()
-                
+                order.append(node)
                 # Vertices which can be accessed from node
                 for adjacent in adj[node]:
                     
@@ -35,6 +34,5 @@ class Solution:
                     
                     if not indegree[adjacent]:
                         que.append(adjacent)
-                        order.append(adjacent)
                         
         return len(order) == numCourses
