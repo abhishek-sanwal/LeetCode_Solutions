@@ -6,11 +6,11 @@ class Solution:
         
         adj = defaultdict(list)
         
-        for u,v in prerequisites:
+        for v,u in prerequisites:
             
             adj[u].append(v)
             indegree[v] += 1
-            
+        
         que = deque()
         # Find nodes with zero degree or zero dependecies or starter nodes
         order = list()
@@ -19,7 +19,6 @@ class Solution:
             if not indegree[node]:
                 
                 que.append(node)
-                
                 
         while que:
             
@@ -34,5 +33,5 @@ class Solution:
                     
                     if not indegree[adjacent]:
                         que.append(adjacent)
-                        
+                
         return len(order) == numCourses
