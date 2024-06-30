@@ -7,6 +7,8 @@ class Unionfind:
         
         self.rank = [0] * ((size) + 1)
         
+        self.distinct_components = size
+        
     def find_parent(self,u):
         
         if u ==  self.parent[u]:
@@ -19,6 +21,7 @@ class Unionfind:
     
     def UnionParent(self,A,B):
         
+        self.distinct_components -= 1
         if A != B:
             
             if self.rank[A] < self.rank[B]:
@@ -43,40 +46,10 @@ class Unionfind:
         self.UnionParent(A,B)
 
         return False
-       
-# class UnionFind:
     
-#     def __init__(self,node=10**5):
-        
-#         self.parent = [i for i in range(node+1)]
-        
-#         self.rank = [0]*(node+1)
-        
-#     def find_parent(self, node):
-        
-#         if node == self.parent[node]:
-            
-#             return self.parent[node]
-        
-#         self.parent[node] = self.parent[find_parent[node]]
-        
-#         return self.parent[node]
-    
-#     def union_nodes(self, node_u:int ,node_v:int)->bool:
-        
-#         if self.find_parent(node_u) == self.find_parent(node_v):
-            
-#             return False
-        
-#         if self.rank[node_u] < self.rank[node_v]:
-#             node_u, node_v = node_v, node_u
-            
-#             self.parent[node_u] = node_v
-#             self.rank[node_u] += 1
-            
-            
-#         return True
-            
+    def isUnited(self):
+        # print(self.distinct_components)
+        return self.distinct_components == 1
         
 class Solution:
     def maxNumEdgesToRemove(self, n: int, edges: List[List[int]]) -> int:
@@ -108,17 +81,7 @@ class Solution:
             
             count += int(areMerged1 if typ == 1 else ( areMerged2 if typ == 2 else areMerged1 & areMerged2 ))
         
-        a = alice.find_parent(alice.parent[1])
-        b = bob.find_parent(bob.parent[1])
-        
-        # Not fully connected         
-        for i in range(2,n+1):
-            
-            if alice.find_parent(alice.parent[i]) != a or bob.find_parent(bob.parent[i]) != b:
-                
-                return -1
-            
-        return count
+        return -1 if not(alice.isUnited() and bob.isUnited()) else count
         
         
 #         alice = defaultdict(list)
