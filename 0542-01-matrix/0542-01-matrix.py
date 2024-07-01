@@ -46,14 +46,14 @@ class Solution:
                     new_x, new_y = x+x1, y+y1
                     
                     if isValid(new_x, new_y) and grid[new_x][new_y] == -1:
-                        # print(new_x, new_y)
-                        grid[new_x][new_y] = 1
-                        ans[new_x][new_y] = mins
+                        
+                        grid[new_x][new_y] = mins
+                        # ans[new_x][new_y] = mins
                         que.append([new_x, new_y])
                         
             mins += 1        
         print(grid)
-        return ans
+        return grid
         
         
         
