@@ -27,13 +27,33 @@ class Solution:
                     dfs(adjacent)
                     
             return None
+        
+        def bfs(node):
+            
+            que = deque([node])
+            
+            while que:
+                
+                for _ in range(len(que)):
+                    
+                    node = que.popleft()
+                    
+                    for adjacent in adj[node]:
+                        
+                        if adjacent not in vis:
+                            
+                            vis.add(adjacent)
+                            que.append(adjacent)
+                            
+            return None
             
         count = 0
         for i in range(len(isConnected)):
             
             if i not in vis:
                 
-                dfs(i)
+                # dfs(i)
+                bfs(i)
                 count += 1
                 
         return count
