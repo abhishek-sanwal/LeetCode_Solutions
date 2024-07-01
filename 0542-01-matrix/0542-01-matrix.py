@@ -37,7 +37,6 @@ class Solution:
         mins = 1
         while que:
             
-            print(que)
             for _ in range(len(que)):
 
                 x,y = que.popleft()
