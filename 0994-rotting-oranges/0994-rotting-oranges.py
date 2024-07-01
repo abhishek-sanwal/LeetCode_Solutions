@@ -33,11 +33,13 @@ class Solution:
                 elif grid[i][j] == 1:
                     
                     one_count += 1
-                    
+        
+        if not one_count:
+            return 0
                     
         minutes = 0        
         while que:
-            flag = False
+            
             for i in range(len(que)):
                 
                 x,y = que.popleft()
@@ -50,12 +52,12 @@ class Solution:
                         
                         one_count -= 1
                         grid[new_x][new_y] = 2
-                        flag = True
+                        
                         que.append([new_x, new_y])
                 # print(grid)
-            if flag:
-                minutes  += 1  
-        print(one_count)
-        return minutes if not one_count else -1
+            
+            minutes  += 1  
+        
+        return minutes-1 if not one_count else -1
                     
         
