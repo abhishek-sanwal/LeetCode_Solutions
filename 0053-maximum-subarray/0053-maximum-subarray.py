@@ -3,24 +3,13 @@ class Solution:
         
         curr_sum = 0
         
-        maxi = -math.inf
+        max_sum = -sys.maxsize
+        
         
         for ele in nums:
             
             curr_sum = max(curr_sum + ele, ele)
             
-            maxi = max(maxi,curr_sum)
+            max_sum = max(max_sum, curr_sum)
             
-        return maxi
-    
-        for i in range(len(nums)):
-            
-            sumi = 0
-            
-            for j in range(i,len(nums)):
-                
-                sumi += nums[j]
-                
-                maxi = max(maxi,sumi)
-                
-        return maxi
+        return max_sum
