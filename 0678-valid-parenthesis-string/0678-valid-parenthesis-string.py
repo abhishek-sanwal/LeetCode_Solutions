@@ -1,6 +1,36 @@
 class Solution:
     def checkValidString(self, s: str) -> bool:
         
+        open_count = close_count = 0
+        
+        high = len(s) - 1
+        
+        for low in range(len(s)):
+            
+            if s[low] in ["(","*"]:
+                
+                open_count += 1
+                
+            # Means we have matched this
+            else:
+                open_count -= 1
+                
+            if s[high-low] in [")","*"]:
+                
+                close_count += 1
+                
+            else:
+                close_count -= 1
+            
+            if min(open_count,close_count) < 0:
+                return False
+            
+        return True
+                
+            
+                
+        
+        
         stack = []
         lis = []
         
