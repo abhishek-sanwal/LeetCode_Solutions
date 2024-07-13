@@ -15,22 +15,23 @@ class Solution:
             else:
                 open_count -= 1
                 
-            if s[high-low] in [")","*"]:
+            if open_count < 0:
+                return False
+                
+        for i in range(len(s)-1,-1,-1):
+            
+            if s[i] in [")","*"]:
                 
                 close_count += 1
                 
             else:
                 close_count -= 1
             
-            if min(open_count,close_count) < 0:
+            if close_count < 0:
                 return False
             
         return True
-                
             
-                
-        
-        
         stack = []
         lis = []
         
