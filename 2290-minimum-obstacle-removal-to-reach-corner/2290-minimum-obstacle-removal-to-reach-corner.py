@@ -9,6 +9,46 @@ class Solution:
         
         isValid = lambda x,y:x > -1 and x < row and y > -1 and y < col
         
+        vis = set()
+        
+        def bfs():
+            
+            que = deque([ [0,0,0] ] )
+            
+            vis.add((0,0))
+            
+            while que:
+                
+                x,y,cost = que.popleft()
+                
+                if x==row-1 and y == col-1:
+                    
+                    return cost
+                
+                for x1,y1 in directions:
+                
+                    new_x, new_y = x + x1, y + y1
+                    
+                    
+                    if isValid(new_x, new_y) and (new_x, new_y) not in vis:
+                        
+                        vis.add((new_x, new_y))
+                        
+                        if grid[new_x][new_y] == 0:
+                            
+                            que.appendleft( [new_x, new_y, cost] )
+                            
+                        else:
+                            
+                            que.append( [new_x, new_y, cost+1] )
+                            
+            
+            return -1
+        
+        return bfs()
+                
+                
+        
         flat = lambda x,y: x*col + y
         
         INF = 10**18
@@ -40,7 +80,7 @@ class Solution:
                 new_x, new_y = x + x1, y + y1
                 
                 curr_node = flat(new_x, new_y)
-                # print(curr_node, new_x, new_y,len(dist),new_x*row + new_y)
+                
                 if isValid(new_x, new_y) and dist[curr_node] > dist[node] + grid[new_x][new_y]:
                     
                     dist[curr_node] = dist[node] + grid[new_x][new_y]
