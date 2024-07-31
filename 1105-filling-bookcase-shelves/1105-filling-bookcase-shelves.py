@@ -3,13 +3,15 @@ class Solution:
         
         memo = {}
         
-        def recursion(curr_width,index, answer):
+        def recursion(curr_width, index, answer):
             
             if index == len(books):
                 
                 memo[(curr_width, index)] = answer
+                
                 return answer
             
+            # cache
             if (curr_width, index) in memo:
                 
                 return memo[(curr_width, index)]
