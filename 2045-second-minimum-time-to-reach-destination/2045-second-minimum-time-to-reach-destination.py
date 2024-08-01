@@ -2,7 +2,11 @@ class Solution:
     def secondMinimum(self, n: int, edges: List[List[int]], time: int, change: int) -> int:
         
         
-        INF = 10**18
+        INF = sys.maxsize
+
+        source = 1
+
+        destination = n
 
         adj = defaultdict(set)
 
@@ -10,14 +14,135 @@ class Solution:
 
             adj[u].add(v)
             adj[v].add(u)
+
+        dist1 = [-1]*(n+1)
+        dist2 = [-1]*(n+1)
+
+        que = deque([[0,source]])
+
+        while que:
+
+            for i in range(len(que)):
+
+                curr_weight, node = que.popleft()
+
+                # If signal is red wait unti signal becomes green
+                if (curr_weight // change)%2:
+
+                    curr_weight = (curr_weight // change + 1)*change
+
+                curr_weight += time
+
+                for adjacent in adj[node]:
+
+                    if dist1[adjacent] == -1:
+
+                        dist1[adjacent] = curr_weight
+
+                        que.append([curr_weight, adjacent])
+
+                    elif dist2[adjacent] == -1 and curr_weight != dist1[adjacent]:
+
+                        dist2[adjacent] = curr_weight
+                        que.append([curr_weight, adjacent])
+                        if adjacent == destination:
+
+                            return dist2[adjacent]
+
+        return  dist2[adjacent]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        dist1 = [INF]*(n+1)
+        dist2 = [INF]*(n+1)
+
+        dist1[source] = 0
+
+        min_heap = list()
+        heappush(min_heap,[0, 1])
+
+        freq = [0]*(n+1)
+
+        while min_heap:
+
+            curr_weight, node = heappop(min_heap)
+
+            # If signal is red wait unti signal becomes green
+            if (curr_weight // change)%2:
+
+                curr_weight = (curr_weight // change + 1)*change
+
+            curr_weight += time
+
+            for adjacent in adj[node]:
+                
+                if freq[adjacent] == 2:
+                    continue
+
+                if curr_weight  < dist1[adjacent]:
+                    
+                    dist2[adjacent] = dist1[adjacent]
+
+                    dist1[adjacent] = curr_weight
+
+                    heappush(min_heap,[curr_weight, adjacent])
+
+                if curr_weight < dist2[adjacent] and dist1[adjacent] != curr_weight:
+
+                    dist2[adjacent] = curr_weight
+
+                    heappush(min_heap,[curr_weight, adjacent])
+        print(dist1,dist2)
+        return dist2[n]
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         dist1 = [math.inf] * (n + 1)
         dist2 = [math.inf] * (n + 1)
+
         freq = [0] * (n + 1)
         
         min_heap = [(0, 1)]
+
         dist1[1] = 0
         
         while min_heap:
+
             curr_weight, node = heapq.heappop(min_heap)
             freq[node] += 1
             
@@ -50,55 +175,6 @@ class Solution:
         # Each vertex has  weight equal to time minutes
         # Signal chnages after every change minutes
 
-        dist1 = [1000] * (n+1)
-        dist2 = [1000] * (n+1)
-        
-        min_heap = [[0,1]]
-
-        dist1[1] = dist2[1] = 0
-        
-        freq = [0]*(n+1)
-        
-        while min_heap:
-            
-            curr_weight, node = heappop(min_heap)
-            
-            # If signal is red wait unti signal becomes green
-            if (curr_weight // change)%2:
-
-                curr_weight = (curr_weight // change + 1)*change
-
-            freq[node] += 1
-            
-            curr_weight += time
-                
-            for adjacent in adj[node]:
-                
-                if freq[adjacent] == 2:
-                    continue
-                    
-                if dist1[adjacent] > curr_weight:
-                    dist2[adjacent] = dist1[adjacent]
-                    dist1[adjacent] = curr_weight
-                    heappush(min_heap,[curr_weight, adjacent])
-                
-                elif dist2[adjacent] > curr_weight and dist1[adjacent] != curr_weight:
-                    
-                    dist2[adjacent] = curr_weight
-                    heappush(min_heap,[curr_weight, adjacent])
-        
-#         1:2
-#         2:1
-        
-#         [3:2]
-        
-        freq = [0,1,0]
-        curr_weight = 3
-        
-        return dist2[n]
-        
-        
-        
         
         
         
