@@ -2,27 +2,29 @@ class Solution:
     def wonderfulSubstrings(self, word: str) -> int:
         
         
-        odd_mask =  ans = 0
+        prefix_odd_mask =  ans = 0
         
         mapp = defaultdict(int)
+        
         mapp[0] = 1
         
         for char in word:
             
             bit = ord(char) - 97
             
-            odd_mask ^= (1 << bit)
+            prefix_odd_mask ^= (1 << bit)
             
-            ans += mapp[odd_mask]
+            ans += mapp[prefix_odd_mask]
             
-            mapp[odd_mask] += 1
+            mapp[prefix_odd_mask] += 1
             
+            # a to j
             for char in range(0,10):
-
-                if odd_mask ^ (1<<char) in mapp:
-
-                    ans += mapp[odd_mask^(1<<char)]
                 
+                odd_freq_char_mask = prefix_odd_mask ^ (1 << char)
+                
+                if odd_freq_char_mask in mapp:
+                    ans += mapp[odd_freq_char_mask]
         return ans
         
         
