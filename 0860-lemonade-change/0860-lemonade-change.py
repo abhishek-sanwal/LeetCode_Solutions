@@ -3,38 +3,31 @@ class Solution:
         
         count = Counter()
         
+        currency = [20,10,5]
+        
+        take = 5
+        
         for bill in bills:
             
             original = bill
-            bill -= 5
-            dollar_20 = (bill // 20)
-            bill %= 20
-            
-            dollar_10 = (bill // 10)
-            bill %= 10
-            
-            dollar_5 = (bill // 5)
-            bill %= 5
-            
-            if not count[20] and dollar_20 > 0:
+            bill -= take
+            req = 0
+            for note in currency:
                 
-                dollar_10 += 2*dollar_20
-                dollar_20 = 0
+                req += bill // note
+                bill %= note
+                # print(req,count[note])
+                if req <= count[note]:
+                    
+                    count[note] -= req
+                    req = 0
+                    
+                req *= 2
                 
-            if not count[10] and dollar_10 > 0:
-                
-                dollar_5 += 2*dollar_10
-                dollar_10 = 0
-            
-            if (dollar_20 > count[20]) or (dollar_10 > count[10]) or (dollar_5 > count[5]) or bill > 0:
-                print(dollar_20,dollar_10, dollar_5, original, count)
-                return False
-            
-            count[20] -= dollar_20
-            count[10] -= dollar_10
-            count[5] -= dollar_5
-            
             count[original] += 1
-            
+            # print(req,count, original)
+            if req>0:
+                
+                return False
             
         return True
