@@ -14,14 +14,15 @@ class Solution:
         # nums[i] + nums[j] - abs(i-j)
         # nums[i] + nums[j] - i -j (i>j)
         # nums[i] + nums[j] - j-i (j>i)
-        
+        # [1,5]
+        # [1,6]  [4,5]
         for i in range(1,row):
             
             left = [previous_dp[0]]
 
             for j in range(1, col):
 
-                left.append(max(left[-1]-1, previous_dp[j])) # i>j
+                left.append(max(left[-1]-1, previous_dp[j] )) # i>j
 
             right = [0]*col
             right[-1] = previous_dp[-1]
