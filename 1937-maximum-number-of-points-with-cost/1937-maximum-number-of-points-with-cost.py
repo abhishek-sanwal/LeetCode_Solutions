@@ -22,20 +22,20 @@ class Solution:
 
             for j in range(1, col):
 
-                left.append(max(left[-1]-1, previous_dp[j] )) # i>j
+                left.append(max(left[-1], previous_dp[j] + j )) # i>j
 
             right = [0]*col
-            right[-1] = previous_dp[-1]
+            right[-1] = previous_dp[-1] - (col-1)
         
             for j in range(col-2,-1,-1):
 
-                right[j] = max(right[j+1]-1, previous_dp[j]) # i<j
+                right[j] = max(right[j+1], previous_dp[j] -j) # i<j
             # print(left, right)
             dp = []
             for j in range(col):
                 maxi = -10**18
                                   
-                maxi = max(maxi, points[i][j] + right[j], points[i][j] + left[j])
+                maxi = max(maxi, points[i][j] + right[j] + j, points[i][j] + left[j]-j)
                 
                 dp.append(maxi)
             # print(dp)
