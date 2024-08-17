@@ -30,7 +30,7 @@ class Solution:
             for j in range(col-2,-1,-1):
 
                 right[j] = max(right[j+1], previous_dp[j] -j) # i<j
-            # print(left, right)
+            
             dp = []
             for j in range(col):
                 maxi = -10**18
@@ -38,8 +38,7 @@ class Solution:
                 maxi = max(maxi, points[i][j] + right[j] + j, points[i][j] + left[j]-j)
                 
                 dp.append(maxi)
-            # print(dp)
+            
             previous_dp = dp
-            dp = list()
         
         return max(previous_dp)
