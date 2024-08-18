@@ -30,33 +30,66 @@ class Solution(object):
         :rtype: int
         """
         
-        heap = []
+        dp = [1]
         
-        check = set([1])
+        factors = [2,3,5]
         
-        heappush(heap,1)
+        two_ptr = three_ptr = five_ptr = 0
         
-        while n:
+        for i in range(1,n):
             
-            x = heappop(heap)
-            
-            if x*2 not in check:
-            
-                heappush(heap,x*2)  
-                check.add(x*2)
-            
-            if x*3 not in check:
-            
-                heappush(heap,x*3)  
-                check.add(x*3)
+            num = min(dp[two_ptr]*2 ,dp[three_ptr]*3, dp[five_ptr]*5)
+            dp.append(num)
+            if num  == dp[two_ptr]*2:
+
+                two_ptr += 1
                 
-            if x*5 not in check:
+            if num == dp[three_ptr]*3:
+                
+                three_ptr += 1
+                
+            if num == dp[five_ptr]*5:
+                
+                five_ptr += 1
+        print(dp)    
+        return dp[-1]
             
-                heappush(heap,x*5)  
-                check.add(x*5)
-            n -= 1
             
-        return x
+            
+            
+            
+            
+            
+        return dp[-1]
+        
+    
+#         heap = []
+        
+#         check = set([1])
+        
+#         heappush(heap,1)
+        
+#         while n:
+            
+#             x = heappop(heap)
+            
+#             if x*2 not in check:
+            
+#                 heappush(heap,x*2)  
+#                 check.add(x*2)
+            
+#             if x*3 not in check:
+            
+#                 heappush(heap,x*3)  
+#                 check.add(x*3)
+                
+#             if x*5 not in check:
+            
+#                 heappush(heap,x*5)  
+#                 check.add(x*5)
+#             n -= 1
+            
+#         return x
         
         
         
