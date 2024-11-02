@@ -6,7 +6,7 @@ var isCircularSentence = function(sentence) {
     
     return sentence.split(" ").reduce( function(check, word,index,arr){
         
-        return check && (index !== arr.length-1 ? arr[index].at(-1) === arr[index+1][0] : arr[index].at(-1) === arr[0][0]) ;
+        return check && (index !== arr.length-1 ? arr.at(index).at(-1) === arr.at(index+1).at(0) : arr.at(index).at(-1) === arr.at(0).at(0)) ;
         
     },true);
     
