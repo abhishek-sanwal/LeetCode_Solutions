@@ -1,4 +1,5 @@
--- Write your PostgreSQL query statement below
+/* Write your PL/SQL query statement below */
+
 
 select e1.name as Employee
 from employee e1, employee e2
